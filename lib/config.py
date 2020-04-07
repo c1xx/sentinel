@@ -17,7 +17,7 @@ min_bitcored_proto_version_with_sentinel_ping = 70207
 def get_bitcore_conf():
     home = os.environ.get('HOME')
 
-    bitcore_conf = os.path.join(home, ".bitcorecore/bitcore.conf")
+    bitcore_conf = os.path.join(home, ".bitcore/bitcore.conf")
     if sys.platform == 'darwin':
         bitcore_conf = os.path.join(home, "Library/Application Support/BitcoreCore/bitcore.conf")
 

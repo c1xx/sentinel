@@ -5,5 +5,5 @@ mkdir ~/.bitcorecore
 
 # safety check
 if [ ! -f ~/.bitcorecore/.bitcore.conf ]; then
-  cp share/bitcore.conf.example ~/.bitcorecore/bitcore.conf
+  cp share/bitcore.conf.example ~/.bitcore/bitcore.conf
 fi
