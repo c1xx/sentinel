@@ -10,8 +10,8 @@ default_sentinel_config = os.path.normpath(
 )
 sentinel_config_file = os.environ.get('SENTINEL_CONFIG', default_sentinel_config)
 sentinel_cfg = BitcoreConfig.tokenize(sentinel_config_file)
-sentinel_version = "1.1.0"
-min_bitcored_proto_version_with_sentinel_ping = 70207
+sentinel_version = "1.2.1"
+min_bitcored_proto_version_with_sentinel_ping = 80000
 
 
 def get_bitcore_conf():

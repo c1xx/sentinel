@@ -42,8 +42,10 @@ class BitcoreDaemon():
         return self.rpc_connection.__getattr__(params[0])(*params[1:])
 
     # common RPC convenience methods
-    def is_testnet(self):
-        return self.rpc_command('getinfo')['testnet']
+#    def is_testnet(self):
+#        return self.rpc_command('getinfo')['testnet']
+#    def is_networkactive(self):
+#        return self.rpc_command('getnetworkinfo')['networkactive']
 
     def get_masternodes(self):
         mnlist = self.rpc_command('masternodelist', 'full')
