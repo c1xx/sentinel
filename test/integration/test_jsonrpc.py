@@ -55,6 +55,5 @@ def test_bitcored():
     #   assert key in info
     # assert info['testnet'] is is_testnet
 assert info['networkactive'] is is_networkactive
-    
     # test commands with args
     assert bitcored.rpc_command('getblockhash', 0) == genesis_hash
