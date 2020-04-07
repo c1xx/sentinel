@@ -4,11 +4,11 @@ An all-powerful toolset for Bitcore.
 
 [![Build Status](https://travis-ci.org/bitcorepay/sentinel.svg?branch=master)](https://github.com/LIMXTEC/sentinel)
 
-Sentinel is an autonomous agent for persisting, processing and automating Bitcore V12.1 governance objects and tasks, and for expanded functions in the upcoming Bitcore V13 release (Evolution).
+Sentinel is an autonomous agent for persisting, processing and automating Bitcore V12.1 governance objects and tasks, and for expanded functions in the upcoming Bitcore V 1.0.0 release.
 
-Sentinel is implemented as a Python application that binds to a local version 12.1 bitcored instance on each Bitcore V12.1 Masternode.
+Sentinel is implemented as a Python application that binds to a local version 12.1 bitcored instance on each Bitcore V 0.90.x.x Masternode.
 
-This guide covers installing Sentinel onto an existing 12.1 Masternode in Ubuntu 14.04 / 16.04.
+This guide covers installing Sentinel onto an existing 0.90.x.x Masternode in Ubuntu 14.04 / 16.04.
 
 ## Installation
 

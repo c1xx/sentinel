@@ -160,9 +160,9 @@ def main():
     bitcored = BitcoreDaemon.from_bitcore_conf(config.bitcore_conf)
     options = process_args()
     
-    if options.version:
-        print("Bitcore Sentinel v%s" % config.sentinel_version)
-        return
+#    if options.version:
+#        print("Bitcore Sentinel v%s" % config.sentinel_version)
+#        return
 
     # check bitcored connectivity
     if not is_bitcored_port_open(bitcored):
