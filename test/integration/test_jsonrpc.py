@@ -33,21 +33,26 @@ def test_bitcored():
 
     # Bitcore testnet block 0 hash == 02c5d66e8edb49984eb743c798bca069466ce457b7febfa3c3a01b33353b7bc6
     # test commands without arguments
-    info = bitcored.rpc_command('getinfo')
+    info = bitcored.rpc_command('getnetworkinfo')
     info_keys = [
         'blocks',
-        'connections',
-        'difficulty',
-        'errors',
+        'subversion',
         'protocolversion',
-        'proxy',
-        'testnet',
+        'localservices',
+        'localrelay',
         'timeoffset',
+        'networkactive',
+        'connections',
         'version',
+        'networks',
+        'relayfee',
+        'incrementalfee',
+        'localaddresses',
+        'warnings',
     ]
     for key in info_keys:
         assert key in info
-    # assert info['testnet'] is is_testnet
+    assert info['testnet'] is is_testnet
 
     # test commands with args
     assert bitcored.rpc_command('getblockhash', 0) == genesis_hash
