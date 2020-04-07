@@ -27,7 +27,8 @@ def test_bitcored():
     creds = BitcoreConfig.get_rpc_creds(config_text, network)
     bitcored = BitcoreDaemon(**creds)
     assert bitcored.rpc_command is not None
-
+    
+    #To Do
     #assert hasattr(bitcored, 'rpc_connection')
 
     # Bitcore testnet block 0 hash == 02c5d66e8edb49984eb743c798bca069466ce457b7febfa3c3a01b33353b7bc6
