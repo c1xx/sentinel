@@ -8,30 +8,30 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'lib'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 import config
 
-from dashd import DashDaemon
-from dash_config import DashConfig
+from bitcored import BitcoreDaemon
+from bitcore_config import BitcoreConfig
 
 
-def test_dashd():
-    config_text = DashConfig.slurp_config_file(config.dash_conf)
+def test_bitcored():
+    config_text = BitcoreConfig.slurp_config_file(config.bitcore_conf)
     network = 'mainnet'
     is_testnet = False
-    genesis_hash = u'00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6'
+    genesis_hash = u'604148281e5c4b7f2487e5d03cd60d8e6f69411d613f6448034508cea52e9574'
     for line in config_text.split("\n"):
         if line.startswith('testnet=1'):
             network = 'testnet'
             is_testnet = True
-            genesis_hash = u'00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c'
+            genesis_hash = u'02c5d66e8edb49984eb743c798bca069466ce457b7febfa3c3a01b33353b7bc6'
 
-    creds = DashConfig.get_rpc_creds(config_text, network)
-    dashd = DashDaemon(**creds)
-    assert dashd.rpc_command is not None
+    creds = BitcoreConfig.get_rpc_creds(config_text, network)
+    bitcored = BitcoreDaemon(**creds)
+    assert bitcored.rpc_command is not None
 
-    assert hasattr(dashd, 'rpc_connection')
+    assert hasattr(bitcored, 'rpc_connection')
 
-    # Dash testnet block 0 hash == 00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c
+    # Bitcore testnet block 0 hash == 02c5d66e8edb49984eb743c798bca069466ce457b7febfa3c3a01b33353b7bc6
     # test commands without arguments
-    info = dashd.rpc_command('getinfo')
+    info = bitcored.rpc_command('getinfo')
     info_keys = [
         'blocks',
         'connections',
@@ -48,4 +48,4 @@ def test_dashd():
     assert info['testnet'] is is_testnet
 
     # test commands with args
-    assert dashd.rpc_command('getblockhash', 0) == genesis_hash
+    assert bitcored.rpc_command('getblockhash', 0) == genesis_hash

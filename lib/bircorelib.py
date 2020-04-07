@@ -12,14 +12,14 @@ from misc import printdbg, epoch2str
 import time
 
 
-def is_valid_dash_address(address, network='mainnet'):
+def is_valid_bitcore_address(address, network='mainnet'):
     # Only public key addresses are allowed
     # A valid address is a RIPEMD-160 hash which contains 20 bytes
     # Prior to base58 encoding 1 version byte is prepended and
     # 4 checksum bytes are appended so the total number of
     # base58 encoded bytes should be 25.  This means the number of characters
     # in the encoding should be about 34 ( 25 * log2( 256 ) / log2( 58 ) ).
-    dash_version = 140 if network == 'testnet' else 76
+    bitcore_version = 140 if network == 'testnet' else 76
 
     # Check length (This is important because the base58 library has problems
     # with long addresses (which are invalid anyway).
@@ -32,10 +32,10 @@ def is_valid_dash_address(address, network='mainnet'):
         decoded = base58.b58decode_chk(address)
         address_version = ord(decoded[0:1])
     except:
-        # rescue from exception, not a valid Dash address
+        # rescue from exception, not a valid Bitcore address
         return False
 
-    if (address_version != dash_version):
+    if (address_version != bitcore_version):
         return False
 
     return True
@@ -179,45 +179,45 @@ def create_superblock(proposals, event_block_height, budget_max, sb_epoch_time):
     return sb
 
 
-# shims 'til we can fix the dashd side
-def SHIM_serialise_for_dashd(sentinel_hex):
-    from models import DASHD_GOVOBJ_TYPES
+# shims 'til we can fix the bitcored side
+def SHIM_serialise_for_bitcored(sentinel_hex):
+    from models import BITCORED_GOVOBJ_TYPES
     # unpack
     obj = deserialise(sentinel_hex)
 
-    # shim for dashd
+    # shim for bitcored
     govtype = obj[0]
 
     # add 'type' attribute
-    obj[1]['type'] = DASHD_GOVOBJ_TYPES[govtype]
+    obj[1]['type'] = BITCORED_GOVOBJ_TYPES[govtype]
 
-    # superblock => "trigger" in dashd
+    # superblock => "trigger" in bitcored
     if govtype == 'superblock':
         obj[0] = 'trigger'
 
-    # dashd expects an array (even though there is only a 1:1 relationship between govobj->class)
+    # bitcored expects an array (even though there is only a 1:1 relationship between govobj->class)
     obj = [obj]
 
     # re-pack
-    dashd_hex = serialise(obj)
-    return dashd_hex
+    bitcored_hex = serialise(obj)
+    return bitcored_hex
 
 
-# shims 'til we can fix the dashd side
-def SHIM_deserialise_from_dashd(dashd_hex):
-    from models import DASHD_GOVOBJ_TYPES
+# shims 'til we can fix the bitcored side
+def SHIM_deserialise_from_bitcored(bitcored_hex):
+    from models import BITCORED_GOVOBJ_TYPES
 
     # unpack
-    obj = deserialise(dashd_hex)
+    obj = deserialise(bitcored_hex)
 
-    # shim from dashd
+    # shim from bitcored
     # only one element in the array...
     obj = obj[0]
 
     # extract the govobj type
     govtype = obj[0]
 
-    # superblock => "trigger" in dashd
+    # superblock => "trigger" in bitcored
     if govtype == 'trigger':
         obj[0] = govtype = 'superblock'
 
@@ -251,7 +251,7 @@ def did_we_vote(output):
     err_msg = ''
 
     try:
-        detail = output.get('detail').get('dash.conf')
+        detail = output.get('detail').get('bitcore.conf')
         result = detail.get('result')
         if 'errorMessage' in detail:
             err_msg = detail.get('errorMessage')

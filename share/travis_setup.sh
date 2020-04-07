@@ -1,9 +1,9 @@
 #!/bin/bash
 set -evx
 
-mkdir ~/.dashcore
+mkdir ~/.bitcorecore
 
 # safety check
-if [ ! -f ~/.dashcore/.dash.conf ]; then
-  cp share/dash.conf.example ~/.dashcore/dash.conf
+if [ ! -f ~/.bitcorecore/.bitcore.conf ]; then
+  cp share/bitcore.conf.example ~/.bitcorecore/bitcore.conf
 fi
