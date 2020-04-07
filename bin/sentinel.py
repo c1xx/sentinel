@@ -67,12 +67,12 @@ def prune_expired_proposals(bitcored):
 
 
 # ping bitcored
-def sentinel_ping(bitcored):
-    printdbg("in sentinel_ping")
-
-    bitcored.ping()
-
-    printdbg("leaving sentinel_ping")
+#def sentinel_ping(bitcored):
+#    printdbg("in sentinel_ping")
+#
+#    bitcored.ping()
+#
+#    printdbg("leaving sentinel_ping")
 
 
 def attempt_superblock_creation(bitcored):
