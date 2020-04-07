@@ -34,7 +34,7 @@ class BitcoreConfig():
         creds = {key: value for (key, value) in match}
 
         # standard Bitcore defaults...
-        default_port = 8555 if (network == 'mainnet') else 8666
+        default_port = 8556 if (network == 'mainnet') else 8667
 
         # use default port for network if not specified in bitcore.conf
         if not ('port' in creds):
