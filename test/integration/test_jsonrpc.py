@@ -17,6 +17,7 @@ def test_bitcored():
     #network = 'main'
     network = 'main'
     is_testnet = False
+    is_networkactive = True
     genesis_hash = u'604148281e5c4b7f2487e5d03cd60d8e6f69411d613f6448034508cea52e9574'
     for line in config_text.split("\n"):
         if line.startswith('testnet=1'):
@@ -53,6 +54,7 @@ def test_bitcored():
     #for key in info_keys:
     #   assert key in info
     # assert info['testnet'] is is_testnet
-       
+assert info['networkactive'] is is_networkactive
+    
     # test commands with args
     assert bitcored.rpc_command('getblockhash', 0) == genesis_hash
