@@ -59,7 +59,7 @@ def test_get_rpc_creds():
         assert key in creds
     assert creds.get('user') == 'bitcorerpc'
     assert creds.get('password') == 'EwJeV3fZTyTVozdECF627BkBMnNDwQaVLakG3A4wXYyk'
-    assert creds.get('port') == 19998
+    assert creds.get('port') == 8667
 
 
 # ensure bitcore network (mainnet, testnet) matches that specified in config
