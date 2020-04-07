@@ -6,12 +6,12 @@ sys.path.append(os.path.normpath(os.path.join(os.path.dirname(__file__), '../../
 
 
 @pytest.fixture
-def valid_bitcore_address(network='mainnet'):
+def valid_bitcore_address(network='main'):
     return 'yYe8KwyaUu5YswSYmB3q3ryx8XTUu9y7Ui' if (network == 'testnet') else 'XpjStRH8SgA6PjgebtPZqCa9y7hLXP767n'
 
 
 @pytest.fixture
-def invalid_bitcore_address(network='mainnet'):
+def invalid_bitcore_address(network='main'):
     return 'yYe8KwyaUu5YswSYmB3q3ryx8XTUu9y7Uj' if (network == 'testnet') else 'XpjStRH8SgA6PjgebtPZqCa9y7hLXP767m'
 
 
@@ -68,11 +68,11 @@ def test_valid_bitcore_address():
     test = valid_bitcore_address('testnet')
 
     assert is_valid_bitcore_address(main) is True
-    assert is_valid_bitcore_address(main, 'mainnet') is True
+    assert is_valid_bitcore_address(main, 'main') is True
     assert is_valid_bitcore_address(main, 'testnet') is False
 
     assert is_valid_bitcore_address(test) is False
-    assert is_valid_bitcore_address(test, 'mainnet') is False
+    assert is_valid_bitcore_address(test, 'main') is False
     assert is_valid_bitcore_address(test, 'testnet') is True
 
 
@@ -83,11 +83,11 @@ def test_invalid_bitcore_address():
     test = invalid_bitcore_address('testnet')
 
     assert is_valid_bitcore_address(main) is False
-    assert is_valid_bitcore_address(main, 'mainnet') is False
+    assert is_valid_bitcore_address(main, 'main') is False
     assert is_valid_bitcore_address(main, 'testnet') is False
 
     assert is_valid_bitcore_address(test) is False
-    assert is_valid_bitcore_address(test, 'mainnet') is False
+    assert is_valid_bitcore_address(test, 'main') is False
     assert is_valid_bitcore_address(test, 'testnet') is False
 
 

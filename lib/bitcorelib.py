@@ -12,7 +12,7 @@ from misc import printdbg, epoch2str
 import time
 
 
-def is_valid_bitcore_address(address, network='mainnet'):
+def is_valid_bitcore_address(address, network='main'):
     # Only public key addresses are allowed
     # A valid address is a RIPEMD-160 hash which contains 20 bytes
     # Prior to base58 encoding 1 version byte is prepended and

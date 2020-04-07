@@ -26,7 +26,8 @@ class BitcoreConfig():
         return data
 
     @classmethod
-    def get_rpc_creds(self, data, network='mainnet'):
+    def get_rpc_creds(self, data, network='main'):
+    #def get_rpc_creds(self, data, network='main'):
         # get rpc info from bitcore.conf
         match = re.findall(r'rpc(user|password|port)=(.*?)$', data, re.MULTILINE)
 
@@ -34,7 +35,8 @@ class BitcoreConfig():
         creds = {key: value for (key, value) in match}
 
         # standard Bitcore defaults...
-        default_port = 8556 if (network == 'mainnet') else 8667
+        #default_port = 8556 if (network == 'main') else 8667
+        default_port = 8556 if (network == 'main') else 8667
 
         # use default port for network if not specified in bitcore.conf
         if not ('port' in creds):

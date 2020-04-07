@@ -27,7 +27,7 @@ def get_bitcore_conf():
 
 
 def get_network():
-    return sentinel_cfg.get('network', 'mainnet')
+    return sentinel_cfg.get('network', 'main')
 
 
 def sqlite_test_db_name(sqlite_file_path):
