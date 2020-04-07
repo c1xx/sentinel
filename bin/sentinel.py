@@ -205,11 +205,11 @@ def main():
     # load "gobject list" rpc command data, sync objects into internal database
     perform_bitcored_object_sync(bitcored)
 
-    if bitcored.has_sentinel_ping:
-        sentinel_ping(bitcored)
-    else:
-        # delete old watchdog objects, create a new if necessary
-        watchdog_check(bitcored)
+#    if bitcored.has_sentinel_ping:
+#        sentinel_ping(bitcored)
+#    else:
+#        # delete old watchdog objects, create a new if necessary
+#        watchdog_check(bitcored)
 
     # auto vote network objects as valid/invalid
     # check_object_validity(bitcored)
